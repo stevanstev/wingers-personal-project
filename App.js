@@ -1,21 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import LandingPage from './src/containers/LandingPage';
+import { Router, Scene } from 'react-native-router-flux'
+import { StyleSheet } from 'react-native';
+import Login from './src/containers/Login';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+	return (
+	<Router>
+		<Scene key="root">
+			<Scene 
+				key="landing"
+				component={LandingPage} 
+				titleStyle={style.titleStyle} 
+				title="Chicken's Wing" 
+				hideNavBar={true}
+				initial={true} />
+			<Scene 
+				key="login" 
+				hideNavBar={true}
+				component={Login} 
+				titleStyle={style.titleStyle} 
+				title="Login" />
+		</Scene>
+	</Router>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const style = StyleSheet.create({
+	titleStyle: {
+		color: "#e65c00",
+	}
 });
