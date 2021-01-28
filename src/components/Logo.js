@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Logo = (props) => {
     return <Ionicons 
-        name="restaurant" 
+        name="fast-food" 
         size={props.size} 
         color="#e65c00" 
     />;

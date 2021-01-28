@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, View, Text, Button, Alert, Pressable } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import CustomTextInput from '../components/CustomTextInput';
 import VerticalSpacer from '../components/VerticalSpacer';
 import CustomButton from '../components/CustomButton';
 import CustomLoadingCircular from '../components/CustomLoadingCircular';
 import Logo from '../components/Logo';
 import CustomText from '../components/CustomText';
-import { Ionicons } from '@expo/vector-icons';
+import { Actions } from 'react-native-router-flux';
+import PressableIcon from '../components/PressableIcon';
+import HorizontalSpacer from '../components/HorizontalSpacer';
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -19,6 +21,10 @@ const Login = () => {
         setTimeout(() => {
             setLoading(false);
         }, 1000);
+    }, []);
+
+    useEffect(() => {
+        return () => {};
     }, []);
 
     const changeUsernameHandler = (username) => {
@@ -34,7 +40,7 @@ const Login = () => {
             @TODO
             Calling Login API 
         */
-       console.log(username, password);
+        Actions.home({type: 'reset'});
     }
 
     return (
@@ -110,23 +116,17 @@ const Login = () => {
                             bottom={10}
                         />
                         <View style={{flexDirection: "row"}}>
-                            <View>
-                                <Pressable onPress={() => console.log("Hit Google API")}>
-                                    <Ionicons 
-                                        name="logo-google" 
-                                        size={32} 
-                                        color="red"/>
-                                </Pressable>
-                            </View>
-                            <View style={{width: 35}}/>
-                            <View>
-                                <Pressable onPress={() => console.log("Hit Facebook API")}>
-                                    <Ionicons 
-                                        name="logo-facebook" 
-                                        size={32} 
-                                        color="blue"/>
-                                </Pressable>
-                            </View>
+                            <PressableIcon 
+                                iconName="logo-google"
+                                iconSize={32}
+                                iconColor="red"
+                                iconOnPress={() => console.log("Hit Google API")}/>
+                            <HorizontalSpacer width={35} />
+                            <PressableIcon 
+                                iconName="logo-facebook"
+                                iconSize={32}
+                                iconColor="blue"
+                                iconOnPress={() => console.log("Hit Facebook API")}/>
                         </View>
                     </React.Fragment>
             }

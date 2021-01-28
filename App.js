@@ -3,6 +3,7 @@ import LandingPage from './src/containers/LandingPage';
 import { Router, Scene } from 'react-native-router-flux'
 import { StyleSheet } from 'react-native';
 import Login from './src/containers/Login';
+import Home from './src/containers/Home';
 
 export default function App() {
 	return (
@@ -21,6 +22,14 @@ export default function App() {
 				component={Login} 
 				titleStyle={style.titleStyle} 
 				title="Login" />
+
+			<Scene 
+				back={false}
+				hideBackImage={true}
+				key="home" 
+				component={Home} 
+				titleStyle={style.titleStyle} 
+				title="Home" />
 		</Scene>
 	</Router>
   );
